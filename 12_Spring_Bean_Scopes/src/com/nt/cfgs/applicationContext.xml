@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- dependent spring bean cfg -->
+	<bean id="dt" class="java.util.Date" />
+
+	<!-- target spring bean cfg -->
+	<bean id="wmg" class="com.nt.beans.WishMessageGenerator"
+		scope="singleton" lazy-init="default">
+		<property name="date" ref="dt" />
+	</bean>
+
+	<!-- singleton class cfg -->
+	<bean id="pt1" class="com.nt.beans.Printer"
+		factory-method="getPrinter" scope="singleton" />
+		
+	<bean id="pt2" class="com.nt.beans.Printer"
+		factory-method="getPrinter" scope="singleton" />
+</beans>
